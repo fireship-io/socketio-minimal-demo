@@ -1,6 +1,6 @@
 const socket = io("ws://localhost:8080");
 
-socket.on("message", (text) => {
+socket.on("message-server", (text) => {
   const el = document.createElement("li");
   el.innerHTML = text;
   document.querySelector("ul").appendChild(el);
