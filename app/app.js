@@ -1,4 +1,10 @@
-const socket = io("ws://localhost:8080");
+const socket = io("ws://localhost:8080", {
+  extraHeaders: {
+    "x-test-header": "This is the header value"
+  }
+});
+
+socket.emit("header-test", "bla");
 
 socket.on("message-server", (text) => {
   const el = document.createElement("li");

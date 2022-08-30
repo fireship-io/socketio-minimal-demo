@@ -21,9 +21,16 @@ const io = socket(server, {
 
 io.on("connection", function (socket) {
   console.log("a user connected");
+
   socket.on("message", (message) => {
     console.log(message);
     io.emit("message-server", `${socket.id.substr(0, 2)} said ${message}`);
+  });
+
+  socket.on("header-test", (message) => {
+    const TEST_HEADER = socket.handshake.headers["x-test-header"];
+    console.log("TEST_HEADER: ", TEST_HEADER); // This is the header value
+    console.log(message); // bla
   });
 });
 
