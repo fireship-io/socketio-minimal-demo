@@ -16,7 +16,7 @@ Open the `app/index.html` file in a browser.
 when using with react it should be inside an `useEffect` hook, and the clean up should 
 disconnect the last socket
 
-```
+```js
   const [socket, setSocket] = useState(null);
   useEffect(() => {
     if (socketAttributes.ip && socketAttributes.port) {
