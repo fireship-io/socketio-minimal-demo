@@ -17,7 +17,7 @@ when using with react it should be inside an `useEffect` hook, and the clean up 
 disconnect the last socket
 
 ```
-const [socket, setSocket] = useState(null);
+  const [socket, setSocket] = useState(null);
   useEffect(() => {
     if (socketAttributes.ip && socketAttributes.port) {
       const newSocket = io(BASE_URL, {
@@ -41,4 +41,4 @@ const [socket, setSocket] = useState(null);
   socket?.on("disconnect", () => {
     setIsMainConnected(false);
   });
-  ```
+```
