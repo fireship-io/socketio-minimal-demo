@@ -1,20 +1,21 @@
-
-const socket = io('ws://localhost:8080');
-
-socket.on('message', text => {
-
-    const el = document.createElement('li');
-    el.innerHTML = text;
-    document.querySelector('ul').appendChild(el)
-
+const socket = io("ws://localhost:8080", {
+  extraHeaders: {
+    "x-test-header": "This is the header value"
+  }
 });
 
-document.querySelector('button').onclick = () => {
+socket.emit("header-test", "bla");
 
-    const text = document.querySelector('input').value;
-    socket.emit('message', text)
-    
-}
+socket.on("message-server", (text) => {
+  const el = document.createElement("li");
+  el.innerHTML = text;
+  document.querySelector("ul").appendChild(el);
+});
+
+document.querySelector("button").onclick = () => {
+  const text = document.querySelector("input").value;
+  socket.emit("message", text);
+};
 
 // Regular Websockets
 
